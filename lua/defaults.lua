@@ -2,7 +2,6 @@ local vim = vim
 local api = vim.api
 
 vim.o.ruler = true
-vim.o.number = true
 vim.o.linespace = 0
 vim.o.number = true
 vim.o.title = true
@@ -12,12 +11,23 @@ vim.o.colorcolumn = "101"
 vim.o.wildmode = "list:longest,full"
 vim.cmd [[set noswapfile]]
 vim.o.completeopt = "menuone,noselect"
+vim.o.inccommand = "nosplit"
 vim.cmd [[set shortmess+=c]]
 
 -- Colorscheme
 vim.cmd [[set termguicolors]]
 vim.cmd [[let g:everforest_background = 'hard']]
-vim.o.background = "light"
+
+-- vim.g.tokyonight_style = "day" -- storm, night, day
+vim.g.tokyonight_style = "night" -- storm, night, day
+vim.g.tokyonight_colors = {bg_dark = "#000000", bg = "#000000", bg_highlight = "#171922"}
+
+function _G.my_test()
+  print(vim.inspect("hello"))
+end
+
+vim.api.nvim_set_keymap("n", "<F6>", "v:lua.may_test()", {noremap = true})
+
 api.nvim_command [[colorscheme tokyonight]]
 -- api.nvim_command [[colorscheme everforest]]
 

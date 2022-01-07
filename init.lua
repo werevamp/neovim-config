@@ -5,12 +5,11 @@ vim.o.hidden = true
 vim.g.mapleader = ","
 
 vim.cmd [[highlight link CompeDocumentation NormalFloat]]
-vim.cmd [[
+--[[ vim.cmd [[
   let g:python_host_prog = '/usr/local/bin/python2'
   let g:python2_host_prog = '/usr/local/bin/python'
   let g:python3_host_prog = '/usr/local/bin/python3.9'
 ]]
-
 require("plugins")
 require("defaults")
 require("keyRemaps")

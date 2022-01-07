@@ -78,7 +78,7 @@ return require("packer").startup(
     use "kyazdani42/nvim-web-devicons"
     -- use "bling/vim-airline"
     use {
-      "shadmansaleh/lualine.nvim",
+      "nvim-lualine/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
     use "lukas-reineke/indent-blankline.nvim"

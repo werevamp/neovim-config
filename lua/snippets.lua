@@ -295,7 +295,8 @@ ls.autosnippets = {
 }
 
 -- in a lua file: search lua-, then c-, then all-snippets.
--- ls.filetype_extend("typescriptreact", {"typescript"})
+ls.filetype_extend("typescriptreact", {"typescript", "javascript"})
+ls.filetype_extend("typescript", {"javascript"})
 -- in a cpp file: search c-snippets, then all-snippets only (no cpp-snippets!!).
 -- ls.filetype_set("cpp", {"c"})
 
