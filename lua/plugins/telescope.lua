@@ -11,6 +11,11 @@ require("telescope").setup {
       -- other layout configuration here
     },
     dynamic_preview_title = true
+  },
+  pickers = {
+    buffers = {
+      sort_mru = true
+    }
   }
 }
 
@@ -31,3 +36,4 @@ api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", {noremap = t
 api.nvim_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<cr>", {noremap = true})
 api.nvim_set_keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", {noremap = true})
 api.nvim_set_keymap("n", "<leader>F", "<cmd>Telescope live_grep<cr>", {noremap = true})
+api.nvim_set_keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", {noremap = true})

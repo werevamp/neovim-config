@@ -238,7 +238,125 @@ ls.snippets = {
   }
 }
 
+ls.add_snippets(
+  "typescript",
+  {
+    s(
+      {trig = "rh", name = "typescript react hook"},
+      {
+        t("export const "),
+        f(
+          function(args, snip)
+            return snip.env.TM_FILENAME_BASE
+          end,
+          {}
+        ),
+        t(
+          {
+            " = () => {",
+            "\tconsole.log()",
+            "}"
+          }
+        )
+      }
+    )
+  }
+)
+
 -- autotriggered snippets have to be defined in a separate table, luasnip.autosnippets.
+ls.add_snippets(
+  "typescriptreact",
+  {
+    s(
+      {trig = "sty", name = "emotion styled component", dscr = "description"},
+      {
+        t("const "),
+        i(1, "Component"),
+        t(" = styled."),
+        i(2, "div"),
+        t({"`", "\t"}),
+        i(3),
+        t({"", "`"})
+      }
+    ),
+    s(
+      {trig = "stf", name = "emotion styled component function", dscr = "uses the function version"},
+      {
+        t("const "),
+        i(1, "Component"),
+        t(" = styled("),
+        i(2, "ExtendedComponent"),
+        t({")`", "\t"}),
+        i(3),
+        t({"", "`"})
+      }
+    ),
+    s(
+      {trig = "rfc", name = "typescript react component"},
+      {
+        t({"import styled from '@emotion/styled'", "", ""}),
+        t("const "),
+        f(
+          function(args, snip)
+            return snip.env.TM_FILENAME_BASE
+          end,
+          {}
+        ),
+        t(" = () => {"),
+        t(
+          {
+            "",
+            "",
+            "\treturn (",
+            "\t\t<Root><div>"
+          }
+        ),
+        f(
+          function(args, snip)
+            return snip.env.TM_FILENAME_BASE
+          end,
+          {}
+        ),
+        t(
+          {
+            "</div></Root>",
+            "\t)",
+            "}",
+            "",
+            "const Root = styled.div``",
+            "",
+            "export default "
+          }
+        ),
+        f(
+          function(args, snip)
+            return snip.env.TM_FILENAME_BASE
+          end,
+          {}
+        )
+      }
+    ),
+    s(
+      {trig = "rh", name = "typescript react hook"},
+      {
+        t("export const "),
+        f(
+          function(args, snip)
+            return snip.env.TM_FILENAME_BASE
+          end,
+          {}
+        ),
+        t(" = () => {"),
+        t(
+          {
+            "console.log()",
+            "}"
+          }
+        )
+      }
+    )
+  }
+)
 ls.autosnippets = {
   javascript = {
     s(

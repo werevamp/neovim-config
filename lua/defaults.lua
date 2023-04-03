@@ -16,11 +16,6 @@ vim.cmd [[set shortmess+=c]]
 
 -- Colorscheme
 vim.cmd [[set termguicolors]]
-vim.cmd [[let g:everforest_background = 'hard']]
-
--- vim.g.tokyonight_style = "day" -- storm, night, day
-vim.g.tokyonight_style = "night" -- storm, night, day
-vim.g.tokyonight_colors = {bg_dark = "#000000", bg = "#000000", bg_highlight = "#171922"}
 
 function _G.my_test()
   print(vim.inspect("hello"))

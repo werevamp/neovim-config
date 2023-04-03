@@ -1,5 +1,6 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
+local actions = require("distant.nav.actions")
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
@@ -21,6 +22,7 @@ return require("packer").startup(
     use "folke/tokyonight.nvim"
     use "sainnhe/everforest"
     use "rafamadriz/friendly-snippets"
+    use "wsdjeg/vim-fetch"
 
     use(
       {
@@ -32,6 +34,39 @@ return require("packer").startup(
     use {
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate"
+    }
+
+    use {
+      "chipsenkbeil/distant.nvim",
+      config = function()
+        require("distant").setup {
+          -- Applies Chip's personal settings to every machine you connect to
+          --
+          -- 1. Ensures that distant servers terminate with no connections
+          -- 2. Provides navigation bindings for remote directories
+          -- 3. Provides keybinding to jump into a remote file's parent directory
+          ["*"] = {
+            distant = {
+              args = "--shutdown-after 60"
+            },
+            file = {
+              mappings = {
+                ["_"] = actions.up
+              }
+            },
+            dir = {
+              mappings = {
+                ["<Return>"] = actions.edit,
+                ["_"] = actions.up,
+                ["K"] = actions.mkdir,
+                ["N"] = actions.newfile,
+                ["R"] = actions.rename,
+                ["D"] = actions.remove
+              }
+            }
+          }
+        }
+      end
     }
 
     use {
@@ -47,12 +82,13 @@ return require("packer").startup(
     use {
       "hrsh7th/nvim-cmp",
       requires = {
-        "hrsh7th/vim-vsnip",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-buffer"
       }
     }
-    use "onsails/lspkind-nvim"
     use "hrsh7th/cmp-nvim-lsp"
+    use "onsails/lspkind-nvim"
     use "L3MON4D3/Luasnip"
     use "saadparwaiz1/cmp_luasnip"
     use "ray-x/lsp_signature.nvim"
@@ -66,6 +102,7 @@ return require("packer").startup(
     use "justinmk/vim-dirvish"
     use "tpope/vim-eunuch"
     use "kristijanhusak/vim-dirvish-git"
+    use "bounceme/remote-viewer"
 
     -- Syntax parsers
     use "jparise/vim-graphql"
