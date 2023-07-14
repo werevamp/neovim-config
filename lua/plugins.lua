@@ -23,6 +23,7 @@ return require("packer").startup(
     use "sainnhe/everforest"
     use "rafamadriz/friendly-snippets"
     use "wsdjeg/vim-fetch"
+    use "github/copilot.vim"
 
     use(
       {

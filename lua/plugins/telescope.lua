@@ -3,6 +3,7 @@ local api = vim.api
 local previewers = require("telescope.previewers")
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
+local builtin = require("telescope.builtin")
 
 require("telescope").setup {
   defaults = {
@@ -32,8 +33,10 @@ pickers.new {
 }
 
 api.nvim_set_keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", {noremap = true})
-api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", {noremap = true})
-api.nvim_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<cr>", {noremap = true})
+-- api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<cr>", {noremap = true})
+-- api.nvim_set_keymap("n", "gd", "<cmd>Telescope lsp_definitions<cr>", {noremap = true})
+vim.keymap.set("n", "gd", builtin.lsp_definitions, {noremap = true, silent = true})
+vim.keymap.set("n", "gr", builtin.lsp_references, {noremap = true, silent = true})
 api.nvim_set_keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", {noremap = true})
 api.nvim_set_keymap("n", "<leader>F", "<cmd>Telescope live_grep<cr>", {noremap = true})
 api.nvim_set_keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", {noremap = true})
